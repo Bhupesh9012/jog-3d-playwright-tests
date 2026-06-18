@@ -3,7 +3,7 @@ test.setTimeout(80000);
 
 test("3D Configurator",async function({page}){
     
-    await page.goto("https://3d.jog-joinourgame.com/3djogdigital/index.php")
+    await page.goto("https://3d.jog-joinourgame.com/3djogdigital/")
 
     await page.locator("//a[normalize-space()='sign-in']").click()
 
@@ -83,7 +83,7 @@ test("3D Configurator",async function({page}){
     const nextbutton =page.locator(".themeBtn.icnBtn.nextBtnBefore");
 
     await nextbutton.click()
-
+    
     // await page.waitForTimeout(3000)
 
     await page.locator("//input[@id='selectAllFlagLogo']").check()
@@ -139,8 +139,13 @@ test("3D Configurator",async function({page}){
     await page.locator("//a[normalize-space()='Checkout']").click()
 
     const confirmOrderButton = page.locator("//button[normalize-space()='Yes, confirm order']")
+
     await expect(confirmOrderButton).toBeVisible({ timeout: 30000 })
+
     await expect(confirmOrderButton).toBeEnabled({ timeout: 30000 })
+
     await confirmOrderButton.scrollIntoViewIfNeeded()
+
     await confirmOrderButton.click()
+    
 })  
