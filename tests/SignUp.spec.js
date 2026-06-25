@@ -8,7 +8,7 @@ test("SignUp page",async function({page}){
 
     await page.waitForTimeout(2000)
 
-    await page.locator("//label[normalize-space()='Name']").click()
+    // await page.locator("//label[normalize-space()='Name']").click()
 
     await page.locator("//input[@id='name']").fill("Test")
 
@@ -20,6 +20,10 @@ test("SignUp page",async function({page}){
     await page.locator("//input[@name='password']").click()
 
     await page.locator("//input[@name='password']").fill("Tester123")
+
+    const countrySelect = page.locator("//div[@id='r-country-ts-control']");
+    await countrySelect.click();
+    await page.getByRole("option", { name: "India", exact: true }).click();
 
     await page.waitForTimeout(2000)
     await page.locator("//a[normalize-space()='Terms and Conditions']").click()
