@@ -25,16 +25,20 @@ test("SignUp page",async function({page}){
     await countrySelect.click();
     await page.getByRole("option", { name: "India", exact: true }).click();
 
-    await page.waitForTimeout(2000)
+    // const selectState =page.locator("//div[@id='r-state-ts-control']");
+    // await selectState.click();
+    // await page.getByRole("option",{name:"Uttarakhand", exact:true}).click();
+
+    // await page.waitForTimeout(2000)
     await page.locator("//a[normalize-space()='Terms and Conditions']").click()
 
-    await page.waitForTimeout(2000)
+    // await page.waitForTimeout(2000)
 
     await page.locator("//input[@id='flexCheckDefault']").check()
 
-    await page.waitForTimeout(2000)
+    // await page.waitForTimeout(2000)
 
     await page.locator("//button[normalize-space()='Sign Up']").click()
     
-    await page.waitForTimeout(5000)
+    await page.waitForTimeout(2000)
 })

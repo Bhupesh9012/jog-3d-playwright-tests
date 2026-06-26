@@ -1,0 +1,31 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://3d.jog-joinourgame.com/3djogdigital/index.php');
+  await page.getByRole('link', { name: 'sign-up' }).click();
+  await page.locator('#name').click();
+  await page.locator('#name').fill('Tester21122');
+  await page.getByText('Email', { exact: true }).click();
+  await page.locator('input[name="email"]').click();
+  await page.locator('input[name="email"]').fill('Tester46@gmail.com');
+  await page.locator('input[name="password"]').click();
+  await page.locator('input[name="password"]').fill('12345678');
+  await page.locator('#r-country-ts-control').click();
+  await page.getByRole('textbox', { name: 'Select country' }).fill('in');
+  await page.getByRole('option', { name: 'India', exact: true }).click();
+  await page.locator('#r-country-ts-control').selectOption('101');
+  await page.locator('#r-state-ts-control').click();
+  await page.getByRole('textbox', { name: 'Select country first' }).fill('utt');
+  await page.getByRole('option', { name: 'Uttarakhand' }).click();
+  await page.locator('#r-state-ts-control').selectOption('4016');
+  await page.locator('#r-city-ts-control').click();
+  await page.getByRole('textbox', { name: 'Select state first' }).fill('Pit');
+  await page.getByRole('option', { name: 'Pithoragarh' }).click();
+  await page.locator('#r-city-ts-control').selectOption('133464');
+  await page.getByRole('textbox', { name: 'Select state first' }).fill('Pit');
+  await page.getByRole('option', { name: 'Pithoragarh' }).click();
+  await page.locator('#r-city-ts-control').selectOption('133464');
+  await page.getByRole('checkbox', { name: 'I agree to the Terms and' }).check();
+  await page.getByRole('button', { name: 'Sign Up ' }).click();;
+  await page.locator('div').filter({ hasText: 'Create An account Enter your' }).nth(1).click();
+});
