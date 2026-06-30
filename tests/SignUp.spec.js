@@ -25,9 +25,12 @@ test("SignUp page",async function({page}){
     await countrySelect.click();
     await page.getByRole("option", { name: "India", exact: true }).click();
 
-    // const selectState =page.locator("//div[@id='r-state-ts-control']");
-    // await selectState.click();
-    // await page.getByRole("option",{name:"Uttarakhand", exact:true}).click();
+    // wait for the state dropdown to become enabled
+    await page.locator("//div[@id='r-state-ts-control']").click();
+
+    // then interact with the actual state input
+    await page.getByRole("textbox", { name: "Select state" }).fill("utt");
+    await page.getByRole("option", { name: "Uttarakhand", exact: true }).click();
 
     // await page.waitForTimeout(2000)
     await page.locator("//a[normalize-space()='Terms and Conditions']").click()
