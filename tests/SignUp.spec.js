@@ -16,7 +16,7 @@ test("SignUp page",async function({page}){
 
     await page.locator("//input[@name='email']").fill("Tester123@gmail.com")
 
-    await page.waitForTimeout(2000)
+    // await page.waitForTimeout(2000)
     await page.locator("//input[@name='password']").click()
 
     await page.locator("//input[@name='password']").fill("Tester123")
@@ -28,8 +28,10 @@ test("SignUp page",async function({page}){
     // wait for the state dropdown to become enabled
     await page.locator("//div[@id='r-state-ts-control']").click();
 
-    // then interact with the actual state input
-    await page.getByRole("textbox", { name: "Select state" }).fill("utt");
+    // interact with the visible textbox inside the custom dropdown
+    const stateInput = page.getByRole("textbox", { name: "Select country first" });
+    await stateInput.waitFor({ state: 'visible', timeout: 20000 });
+    await stateInput.fill("Uttarakhand");
     await page.getByRole("option", { name: "Uttarakhand", exact: true }).click();
 
     // await page.waitForTimeout(2000)
