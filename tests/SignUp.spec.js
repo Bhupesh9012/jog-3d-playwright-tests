@@ -34,6 +34,15 @@ test("SignUp page",async function({page}){
     await stateInput.fill("Uttarakhand");
     await page.getByRole("option", { name: "Uttarakhand", exact: true }).click();
 
+    await page.locator("//div[@id='r-city-ts-control']").click();
+
+    const cityInput = page.getByRole("textbox", { name: "Select state first" });
+    await cityInput.waitFor({ state: 'visible', timeout: 20000 });
+    await cityInput.fill("Dehradun");
+    await page.getByRole("option", { name: "Dehradun", exact: true }).click();
+
+    await page.waitForTimeout(3000)
+
     // await page.waitForTimeout(2000)
     await page.locator("//a[normalize-space()='Terms and Conditions']").click()
 
